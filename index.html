@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vishal Property | Real Estate Agent in Andheri East, Mumbai</title>
+  <meta name="description" content="Trusted Real Estate Agent & Property Broker in Andheri East, Mumbai. Buy, Sell & Rent Properties with Expert Consultation."/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
+
+    :root{
+      --primary:#020617;
+      --secondary:#0f172a;
+      --accent:#14b8a6;
+      --light:#f8fafc;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#f8fafc;
+      color:#0f172a;
+      overflow-x:hidden;
+    }
+
+    section{
+      padding:90px 0;
+    }
+
+    .heading-font{
+      font-family:'Playfair Display',serif;
+      font-weight:900;
+      letter-spacing:-2px;
+      line-height:0.95;
+    }
+
+    /* NAVBAR */
+    .navbar{
+      backdrop-filter:blur(14px);
+      background:rgba(255,255,255,.95);
+    }
+
+    .nav-link{
+      position:relative;
+      transition:.3s ease;
+    }
+
+    .nav-link::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-6px;
+      width:0;
+      height:2px;
+      background:#14b8a6;
+      transition:.3s ease;
+    }
+
+    .nav-link:hover{
+      color:#14b8a6;
+    }
+
+    .nav-link:hover::after{
+      width:100%;
+    }
+
+    /* HERO */
+    .hero-bg{
+      background: linear-gradient(to bottom right, rgba(2,6,23,.90), rgba(15,23,42,.75)),
+                  url('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=2000&auto=format&fit=crop') 
+                  center/cover no-repeat;
+      min-height:100vh;
+    }
+
+    .glass{
+      background:rgba(255,255,255,.08);
+      backdrop-filter:blur(12px);
+      border:1px solid rgba(255,255,255,.15);
+    }
+
+    /* BUTTONS */
+    .primary-btn{
+      background:#14b8a6;
+      color:white;
+      transition:.3s ease;
+    }
+
+    .primary-btn:hover{
+      background:#0f766e;
+      transform:translateY(-3px);
+    }
+
+    .secondary-btn{
+      border:2px solid white;
+      transition:.3s ease;
+    }
+
+    .secondary-btn:hover{
+      background:white;
+      color:#020617;
+    }
+
+    /* CARDS */
+    .service-card,
+    .property-card,
+    .testimonial-card{
+      transition:.4s cubic-bezier(.4,0,.2,1);
+    }
+
+    .service-card:hover,
+    .property-card:hover,
+    .testimonial-card:hover{
+      transform:translateY(-10px);
+    }
+
+    .filter-btn{
+      transition:.3s ease;
+    }
+
+    .filter-btn.active{
+      background:#0f172a;
+      color:white;
+      border-color:#0f172a;
+    }
+
+    /* SCROLL PROGRESS */
+    .scroll-progress{
+      position:fixed;
+      top:0;
+      left:0;
+      width:0;
+      height:4px;
+      z-index:9999;
+      background:linear-gradient(to right,#14b8a6,#0f766e);
+    }
+
+    @media(max-width:768px){
+      section{
+        padding:70px 0;
+      }
+      h1{
+        font-size:52px !important;
+      }
+      h2{
+        font-size:42px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- PROGRESS BAR -->
+<div id="progress-bar" class="scroll-progress"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex justify-between items-center h-20">
+      <!-- LOGO -->
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 bg-teal-600 rounded-2xl flex items-center justify-center text-white text-2xl font-black">
+          V
+        </div>
+        <div>
+          <span class="heading-font text-3xl text-slate-900">Vishal</span>
+          <span class="heading-font text-3xl text-teal-600">Property</span>
+        </div>
+      </div>
+
+      <!-- DESKTOP MENU -->
+      <div class="hidden md:flex items-center gap-8 font-semibold">
+        <a href="#home" class="nav-link">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#listings" class="nav-link">Properties</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+
+      <!-- CALL BUTTON -->
+      <div class="flex items-center gap-4">
+        <a href="tel:+919619311381"
+           class="hidden sm:flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-2xl font-bold hover:bg-teal-700 transition">
+          <i class="fa-solid fa-phone"></i>
+          +91 96193 11381
+        </a>
+        <button onclick="toggleMobileMenu()" 
+                class="md:hidden text-2xl text-slate-700">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-6 py-6">
+    <div class="flex flex-col gap-5 text-lg font-semibold">
+      <a href="#home" onclick="toggleMobileMenu()" class="py-2">Home</a>
+      <a href="#about" onclick="toggleMobileMenu()" class="py-2">About</a>
+      <a href="#services" onclick="toggleMobileMenu()" class="py-2">Services</a>
+      <a href="#listings" onclick="toggleMobileMenu()" class="py-2">Properties</a>
+      <a href="#testimonials" onclick="toggleMobileMenu()" class="py-2">Testimonials</a>
+      <a href="#contact" onclick="toggleMobileMenu()" class="py-2">Contact</a>
+      
+      <a href="tel:+919619311381"
+         class="bg-teal-600 text-white py-4 rounded-2xl text-center font-bold mt-4">
+        Call Now: +91 96193 11381
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero-bg flex items-center text-white relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
+    <div class="max-w-3xl">
+      <div class="glass inline-flex items-center gap-3 px-5 py-3 rounded-full text-sm font-semibold mb-8">
+        <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+        Trusted Property Consultant in Andheri East, Mumbai
+      </div>
+
+      <h1 class="heading-font text-6xl md:text-7xl lg:text-8xl mb-6 leading-tight">
+        Mumbai’s Premium<br>Real Estate Experience
+      </h1>
+
+      <p class="text-lg md:text-xl text-slate-200 leading-relaxed max-w-xl mb-10">
+        Buy, Sell & Rent properties with complete confidence. 
+        Vishal Property delivers premium real estate solutions with transparency and expert local guidance.
+      </p>
+
+      <div class="hero-buttons flex flex-col sm:flex-row gap-4">
+        <a href="tel:+919619311381"
+           class="primary-btn px-8 py-5 rounded-2xl font-bold text-lg flex items-center justify-center gap-3">
+          <i class="fa-solid fa-phone"></i>
+          Call Now
+        </a>
+        <button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"
+                class="secondary-btn px-8 py-5 rounded-2xl font-bold text-lg">
+          Free Consultation
+        </button>
+      </div>
+
+      <div class="flex flex-wrap gap-10 mt-12">
+        <div>
+          <div class="text-4xl font-black">500+</div>
+          <div class="text-slate-300 text-sm">Properties Sold</div>
+        </div>
+        <div>
+          <div class="text-4xl font-black">4.9★</div>
+          <div class="text-slate-300 text-sm">Client Rating</div>
+        </div>
+        <div>
+          <div class="text-4xl font-black">9+</div>
+          <div class="text-slate-300 text-sm">Years Experience</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="bg-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <span class="text-teal-600 uppercase tracking-[4px] font-bold text-sm">Since 2015</span>
+        <h2 class="heading-font text-6xl md:text-7xl mt-5 mb-6">
+          Your Trusted Partner in Mumbai Real Estate
+        </h2>
+        <p class="text-lg text-slate-600 leading-relaxed">
+          Vishal Property is a leading real estate consultancy in Andheri East, Mumbai 
+          with deep local expertise and premium client service.
+        </p>
+        <div class="grid grid-cols-3 gap-6 mt-10">
+          <div>
+            <div class="text-4xl font-black text-teal-600">500+</div>
+            <div class="text-sm text-slate-500 mt-1">Happy Clients</div>
+          </div>
+          <div>
+            <div class="text-4xl font-black text-teal-600">250+</div>
+            <div class="text-sm text-slate-500 mt-1">Properties Sold</div>
+          </div>
+          <div>
+            <div class="text-4xl font-black text-teal-600">9+</div>
+            <div class="text-sm text-slate-500 mt-1">Years Experience</div>
+          </div>
+        </div>
+      </div>
+      <div class="rounded-[32px] overflow-hidden shadow-2xl">
+        <img src="https://images.unsplash.com/photo-1494526585095-c41746248156?q=80&w=1600&auto=format&fit=crop"
+             class="w-full h-full object-cover"
+             alt="Vishal Property Office in Andheri East Mumbai">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="bg-slate-100">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <span class="bg-white px-5 py-2 rounded-full text-sm font-bold text-teal-600">OUR SERVICES</span>
+      <h2 class="heading-font text-6xl md:text-7xl mt-6">Expert Real Estate Solutions</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="service-card bg-white rounded-[32px] p-8 border">
+        <div class="w-16 h-16 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center text-3xl mb-8">
+          <i class="fa-solid fa-house"></i>
+        </div>
+        <h3 class="text-2xl font-black mb-4">Property Buying</h3>
+        <p class="text-slate-600 leading-relaxed">Complete assistance in buying your dream home or investment property.</p>
+      </div>
+      <div class="service-card bg-white rounded-[32px] p-8 border">
+        <div class="w-16 h-16 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-3xl mb-8">
+          <i class="fa-solid fa-hand-holding-dollar"></i>
+        </div>
+        <h3 class="text-2xl font-black mb-4">Property Selling</h3>
+        <p class="text-slate-600 leading-relaxed">Maximize your property value with strategic marketing and buyer connections.</p>
+      </div>
+      <div class="service-card bg-white rounded-[32px] p-8 border">
+        <div class="w-16 h-16 rounded-2xl bg-sky-100 text-sky-600 flex items-center justify-center text-3xl mb-8">
+          <i class="fa-solid fa-key"></i>
+        </div>
+        <h3 class="text-2xl font-black mb-4">Rental Services</h3>
+        <p class="text-slate-600 leading-relaxed">Hassle-free rental management for tenants and landlords.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROPERTY LISTINGS -->
+<section id="listings">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-14">
+      <div>
+        <span class="text-teal-600 font-bold tracking-wide">FEATURED PROPERTIES</span>
+        <h2 class="heading-font text-6xl md:text-7xl mt-4">Properties in Andheri & Nearby</h2>
+      </div>
+      <div class="flex gap-3 mt-8 md:mt-0">
+        <button class="filter-btn active px-6 py-3 rounded-full border font-semibold">All</button>
+        <button class="filter-btn px-6 py-3 rounded-full border font-semibold">Buy</button>
+        <button class="filter-btn px-6 py-3 rounded-full border font-semibold">Rent</button>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="property-card bg-white rounded-[32px] overflow-hidden">
+        <div class="overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?q=80&w=1600&auto=format&fit=crop"
+               class="w-full h-72 object-cover hover:scale-110 transition duration-700"
+               alt="Luxury 2BHK Apartment in Andheri East">
+        </div>
+        <div class="p-7">
+          <div class="flex justify-between items-center mb-4">
+            <span class="bg-teal-100 text-teal-700 text-xs font-black px-4 py-2 rounded-full">FOR SALE</span>
+            <div class="text-2xl font-black">₹1.45 Cr</div>
+          </div>
+          <h3 class="text-2xl font-black mb-2">Luxury 2BHK Apartment</h3>
+          <p class="text-slate-500 mb-6">Andheri East, Mumbai</p>
+          <div class="flex justify-between border-t pt-5 text-sm font-bold">
+            <div>2 Beds</div>
+            <div>2 Baths</div>
+            <div>950 sqft</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="property-card bg-white rounded-[32px] overflow-hidden">
+        <div class="overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1484154218962-a197022b5858?q=80&w=1600&auto=format&fit=crop"
+               class="w-full h-72 object-cover hover:scale-110 transition duration-700"
+               alt="Premium 1BHK Flat in Powai">
+        </div>
+        <div class="p-7">
+          <div class="flex justify-between items-center mb-4">
+            <span class="bg-sky-100 text-sky-700 text-xs font-black px-4 py-2 rounded-full">FOR RENT</span>
+            <div class="text-2xl font-black">₹55K/mo</div>
+          </div>
+          <h3 class="text-2xl font-black mb-2">Premium 1BHK Flat</h3>
+          <p class="text-slate-500 mb-6">Powai, Mumbai</p>
+          <div class="flex justify-between border-t pt-5 text-sm font-bold">
+            <div>1 Bed</div>
+            <div>1 Bath</div>
+            <div>650 sqft</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="property-card bg-white rounded-[32px] overflow-hidden">
+        <div class="overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1600&auto=format&fit=crop"
+               class="w-full h-72 object-cover hover:scale-110 transition duration-700"
+               alt="Modern Family Villa in Juhu">
+        </div>
+        <div class="p-7">
+          <div class="flex justify-between items-center mb-4">
+            <span class="bg-purple-100 text-purple-700 text-xs font-black px-4 py-2 rounded-full">FOR SALE</span>
+            <div class="text-2xl font-black">₹2.2 Cr</div>
+          </div>
+          <h3 class="text-2xl font-black mb-2">Modern Family Villa</h3>
+          <p class="text-slate-500 mb-6">Juhu, Mumbai</p>
+          <div class="flex justify-between border-t pt-5 text-sm font-bold">
+            <div>4 Beds</div>
+            <div>3 Baths</div>
+            <div>2100 sqft</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="bg-slate-950 text-white">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-16">
+      <h2 class="heading-font text-6xl md:text-7xl">What Our Clients Say</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="testimonial-card p-8 rounded-[32px]">
+        <div class="text-amber-400 text-3xl mb-6">★★★★★</div>
+        <p class="text-slate-300 italic leading-relaxed">"Vishal helped us find our dream home in Andheri East. Transparent and professional throughout the process."</p>
+        <div class="mt-8">
+          <div class="font-bold">Priya Malhotra</div>
+          <div class="text-sm text-slate-400">Andheri East Resident</div>
+        </div>
+      </div>
+      <div class="testimonial-card p-8 rounded-[32px]">
+        <div class="text-amber-400 text-3xl mb-6">★★★★★</div>
+        <p class="text-slate-300 italic leading-relaxed">"Sold my commercial property quickly and smoothly. Excellent service and trusted guidance."</p>
+        <div class="mt-8">
+          <div class="font-bold">Rajesh Khanna</div>
+          <div class="text-sm text-slate-400">Business Owner</div>
+        </div>
+      </div>
+      <div class="testimonial-card p-8 rounded-[32px]">
+        <div class="text-amber-400 text-3xl mb-6">★★★★★</div>
+        <p class="text-slate-300 italic leading-relaxed">"Best property consultant in Mumbai. Tenant verification and paperwork were seamless."</p>
+        <div class="mt-8">
+          <div class="font-bold">Anjali Sharma</div>
+          <div class="text-sm text-slate-400">Landlord</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="bg-white">
+  <div class="max-w-4xl mx-auto px-6 text-center">
+    <h2 class="heading-font text-6xl md:text-7xl mb-6">Let’s Find Your Perfect Property</h2>
+    <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed mb-10">
+      Contact Vishal Property today for expert real estate consultation in Andheri East and across Mumbai.
+    </p>
+    <div class="flex flex-col md:flex-row justify-center gap-5">
+      <a href="tel:+919619311381"
+         class="primary-btn px-8 py-5 rounded-2xl font-bold text-lg inline-flex items-center justify-center gap-3">
+        <i class="fa-solid fa-phone"></i>
+        +91 96193 11381
+      </a>
+      <a href="https://wa.me/919619311381" target="_blank"
+         class="bg-green-500 hover:bg-green-600 transition text-white px-8 py-5 rounded-2xl font-bold text-lg inline-flex items-center justify-center gap-3">
+        <i class="fa-brands fa-whatsapp"></i>
+        WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-slate-950 text-slate-400 py-12">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+    <div>
+      <div class="text-2xl font-black text-white mb-2">Vishal Property</div>
+      <p>Premium Real Estate Consultant in Mumbai</p>
+    </div>
+    <div class="text-sm">
+      © 2026 Vishal Property. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile Menu Toggle
+  function toggleMobileMenu() {
+    document.getElementById('mobile-menu').classList.toggle('hidden');
+  }
+
+  // Scroll Progress Bar
+  window.addEventListener('scroll', () => {
+    const scrollTop = document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = (scrollTop / scrollHeight) * 100;
+    document.getElementById('progress-bar').style.width = `${progress}%`;
+  });
+
+  // Filter Buttons
+  document.querySelectorAll('.filter-btn').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      // You can add actual filtering logic here later
+    });
+  });
+
+  // Scroll Reveal Animation
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('section').forEach(section => {
+    section.style.transition = 'all 0.7s ease';
+    section.style.opacity = '0';
+    section.style.transform = 'translateY(40px)';
+    observer.observe(section);
+  });
+</script>
+
+</body>
+</html>
